@@ -32,12 +32,12 @@ footer {
 
 .media-right {
   vertical-align: middle;
-  padding-right: 3%;
 }
 
 .date {
   font-family: Arial;
   font-size: 1.1em;
+  color: #222222;
 }
 
 .desc {
@@ -53,4 +53,12 @@ footer {
 
 .media-body {
   padding-left: 1%;
+}
+
+.media {
+  padding-right: 5%;
+}
+
+#content {
+  border-left: 1px double lightgrey;
 }

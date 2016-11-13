@@ -25,7 +25,7 @@
   <script src="js/jquery-1.12.4.min.js"></script>
 
   <!-- favicon -->
-  <link rel="icon" type="image/png" href="img/favicon.ico" />
+  <link rel="icon" type="image/png" href="img/favicon.ico"/>
 
 </head>
 <body>
@@ -52,12 +52,23 @@
     </div>
     <div class="col-md-6">
       <div class="page-main">
-        <nav style="padding-top: 13%">
-          <ul class="nav nav-pills" id="contentforsite">
-            <li class="active"><a data-toggle="pill" onclick="showContent(bio.html)">Bio</a></li>
-            <li><a data-toggle="pill" onclick="showContent(posts.html)">Posts</a></li>
-          </ul>
-        </nav>
+        <div class="container">
+          <nav style="padding-top: 13%">
+            <ul class="nav nav-pills" id="contentforsite">
+              <li><a data-toggle="pill" href="#home">Bio</a></li>
+              <li><a data-toggle="pill" href="#postersn">Posts</a></li>
+            </ul>
+          </nav>
+
+          <div class="tab-content">
+            <div id="home" class="tab-pane">
+              <p>hi</p>
+            </div>
+            <div id="postersn" class="tab-pane">
+              <p>hellos</p>
+            </div>
+          </div>
+        </div>
 
         <div id="content" class="wrapper">
           <div class="container-fluid">
@@ -69,7 +80,6 @@
                     <h2 class="media-heading" style="text-align: left;">
                       <a class="post-title" href="site_content/bio/bio.html">Bio</a>
                     </h2>
-                    <p class="desc">Come see what I'm all about!</p>
                   </div>
                   <div class="media-right">
                     <a href="site_content/bio/bio.html">

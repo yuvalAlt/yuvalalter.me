@@ -37,7 +37,7 @@ footer {
 .date {
   font-family: Arial;
   font-size: 1.1em;
-  color: #222222;
+  color: #5e5e5e;
 }
 
 .desc {
@@ -47,7 +47,7 @@ footer {
 }
 
 .post-title {
-  color: #0f0f0f;
+  color: #8c8c8c;
   padding-left: 2%;
 }
 

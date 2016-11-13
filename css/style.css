@@ -1,7 +1,8 @@
 footer {
   background-color: white;
-  padding-bottom: 0%;
+  padding-bottom: 0;
   color: white;
+
 }
 
 .topBar {
@@ -24,10 +25,11 @@ footer {
 
 #content {
   padding-top: 3%;
+  border-left: 1px double lightgrey;
 }
 
 .page-main {
-  padding-top: 13%;
+  padding-top: 3%;
 }
 
 .media-right {
@@ -59,6 +61,3 @@ footer {
   padding-right: 5%;
 }
 
-#content {
-  border-left: 1px double lightgrey;
-}

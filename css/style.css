@@ -24,7 +24,10 @@ footer {
 
 #content {
   padding-top: 3%;
-  border-left: 1px double lightgrey;
+  //border-left: 1px double lightgrey;
+  position: static;
+  float: right;
+  //width: 75%;
 }
 
 .page-main {

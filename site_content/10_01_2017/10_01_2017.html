@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Yuval Alter</title>
+
+  <!-- Bootstrap -->
+  <link href="../../assets/css/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/docs.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="../../js/bootstrap.js"></script>
+
+  <!-- customized bootstrap by lipis -->
+  <link href="../../bootstrap-social.css" rel="stylesheet">
+
+  <!-- My CSS file -->
+  <link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+  <!-- JQuery -->
+  <script src="../../js/jquery-1.12.4.min.js"></script>
+
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="../../img/favicon.ico"/>
+
+</head>
+<body>
+<div class="navbar navbar-left"
+     style="position:fixed; float:left; height:100%; width:20%; background-color: #dbdbdb; padding:10px; z-index:10; text-align:center;">
+  <div style="text-align:center; border-left: 3px solid darkgrey; height: 100%;">
+    <h3 style="padding-top: 3%; font-size: 2.8em; width:100%;"><a href="../../index.html" style="color:#004403;">Yuval
+      Alter</a></h3>
+    <img class="img-circle" src="../../img/profile.jpg" style="width:75%;">
+    <hr>
+    <ul id="contact" class="links media-list" style="alignment:center;">
+      <li id="email"><a class="btn btn-social-icon" href="mailto:yuvals@my.yorku.ca"><span style="font-size:2.3em; "
+                                                                                           class="glyphicon glyphicon-envelope"></span></a>
+      </li>
+      <li id="linkedin"><a class="btn btn-social-icon btn-linkedin"
+                           href="https://ca.linkedin.com/in/yuval-alter-ba49995b">
+        <span class="fa fa-linkedin"></span>
+      </a></li>
+      <li id="facebook"><a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/yuval.Aa">
+        <span class="fa fa-facebook"></span>
+      </a></li>
+      <li id="github"><a class="btn btn-social-icon btn-github" href="https://github.com/yuvalAlt">
+        <span class="fa fa-github"></span>
+      </a></li>
+    </ul>
+  </div>
+</div>
+<div class="container" style="float:left; padding:10px; position:relative; left:25%; width:65%; z-index:9;">
+  <img src="../../img/10_01_2017/186H.jpg" width="100%"/>
+  <div class="page-main" style="padding-bottom:10%; padding-top:0%; align-self: center;">
+    <h2 style="font-family:Euphemia"><b>Processing a Document Using JQuery</b></h2>
+    <br>
+    <h4 class="hpost"><u>Too Many Transit Systems!</u></h4>
+    <p class="ppost">I've been working on a new site, nothing too major, just a simple site that contains schedules
+    for YRT, TTC, and GO buses. It makes it easier to go to one site instead of three different ones to view bus
+    times in the same city, right? I could never understand why Toronto insists on being so fragmented with it's
+    transit systems.</p>
+    <br>
+    <p class="ppost">I've actually done a whole presentation and report on this along with my group for and
+      entrepreneurship course, you can view it <a href="https://docs.google.com/presentation/d/1qorJpbQQmJckH402TZvdfqJCQhbGmNmtFWxMwBmh7CA/edit?usp=sharing">here</a>
+      and <a href="ENTR3400MarketingReport_new.docx">here</a>. To see my progress so far head over to my
+      <a href="https://github.com/yuvalAlt/bus-times-site">GitHub repository.</a> But anyways, let's get to the
+      interesting stuff!</p>
+    <br>
+    <h4 class="hpost"><u>The Code, For Reference:</u></h4>
+    <pre>
+      $(function () {
+        var yrtBusOps = document.getElementById("yrt_routes_options");
+        var yrtTimeOps = $('yrt_time_options');
+        var url = 'bus\ info/routes.txt';
+        jQuery.get(url, function(data){
+            var lines = data.split("\n");
+            for(var i = 1; i < lines.length - 1; i++){
+                var route = lines[i].split(",");
+                var busLine = document.createElement("option");
+                var optTemp = document.createTextNode(route[2]+" "+route[3]);
+                busLine.appendChild(optTemp);
+                yrtBusOps.appendChild(busLine);
+            }
+        });
+      });
+    </pre>
+    <br>
+    <img src="../../img/10_01_2017/iclzbvw5w5a-todd-quackenbush.jpg" width="100%"/>
+    <br><br>
+    <h4 class="hpost"><u>Using JQuery</u></h4>
+    <p class="ppost">Before we begin, you want to make sure have the right tools for the job. You will need to import the JQuery
+      libraries into your project. You may
+    do it by including this snippet under the head tag of your html file.</p>
+    <code>&ltscript src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"&gt&lt/script&gt</code>
+    <br><br>
+    <p class="ppost">This will import JQuery's libraries from their online storage where the api is stored.
+      It is called a <i>CDN</i>(Content Delivery Network).</p>
+    <br>
+    <h4 class="hpost"><u>Importing a File</u></h4>
+    <p class="ppost">Now that we have our JQuery CDN in there, let's look at how we can import a document in our script.
+    <br>
+    The command that will read from a file into our script is this:<br>
+    <code>jQuery.get(url, function(data){ });</code>
+    <br><br>
+    We first call our JQuery command <i>JQuery.get</i> to, you guessed it, get something for us. We can see that
+    there are two arguments, first the <i>url</i>, and then... another function!? What kind of wizardry is this? Can this
+    only be done under a full moon??? No, not this time young mage; Javascript
+    let's us put functions within functions, it's kind of cool, but not unique to JavaScript. You should look up "lambda
+    expressions", for a start, if you'd like to learn more about this.
+    <br><br>
+    Our first argument, <i>url</i>, is pretty much just that, it's a reference to an html or txt file where the information
+    you want to access is stored. In my whole code, I simply made a variable called <i>url</i> and assigned it a value,
+    which was the path to my text file, you can see it in the whole code above.
+    <br><br>
+    Now, for the second argument, we simply have another function, which in itself has the argument <i>data</i>. This
+    argument will store all the data from the document we imported, and that's basically that. Within this inner
+    function, you can now use the data from the file however you wanted to. To make things easier for yourself, you
+    might want to use the <i>split()</i> function.</p><br>
+    <img src="../../img/10_01_2017/g3qbqto9jt0-matthew-kane.jpg" width="100%"/>
+    <br><br>
+    <h4 class="hpost"><u>Using <i>split()</i></u></h4>
+    <p class="ppost">If you haven't inferred by the functions name, in short, <i>split()</i> sections your data into
+    sections. It does this by splitting every time it sees the symbol that was passed as an argument. For example, if we
+    use the function <i>data.split(" ")</i> our data will be split on every space, meaning we get individual words. This
+    is then stored as an array.
+    <br><br>
+    Take the instance where I used this function:<br>
+    <code>var lines = data.split("\n");</code>
+    <br>
+    What <i>lines</i> is now set to is an array of data sectioned off every new line, so <i>lines[0]</i> will return the
+    first line found in the data grabbed from our text file, <i>lines[1]</i> will return the second line, and so on.
+    That should now allow you to work with the documents you imported into your script, you're all set!</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h4 class="hpost"><u>That's All Folks!</u></h4>
+    <p class="ppost">
+    You should now be able to import text and html files, as well as process their information using JQuery.
+    Make sure to check out my site often as I continue to work on this project and post some
+    more cool things that might help you. So far I will be using HTML, CSS, and JQuery, but I might
+    do some Web Scraping, so I'll post more on that too. Lastly, don't hesitate to email me with any questions, I'm more
+    than happy to answer.
+    <br><br>
+    Happy coding :)
+    </p>
+    <img src="../../img/10_01_2017/15943282_10158099283355512_1364001755_o.jpg" width="100%"/>
+  </div>
+</div>
+
+
+<div class="nav navbar-fixed-bottom modal-footer" style="background-color: lavenderblush;">
+  <p>Site made by Yuval Alter &reg; using <a href="http://getbootstrap.com/">Bootstrap</a>, Icons by <a
+    href="http://lipis.github.io/bootstrap-social/">lipis</a>.</p>
+</div>
+</body>
+</html>
